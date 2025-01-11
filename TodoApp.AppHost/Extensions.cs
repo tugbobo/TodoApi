@@ -25,8 +25,12 @@
     {
         var projectDirectory = Path.GetDirectoryName(new TProject().ProjectPath)!;
 
+        // Install the EF tool
+        var install = builder.AddExecutable("install-ef", "dotnet", projectDirectory, "tool", "install", "--global", "dotnet-ef");
+
         // TODO: Support passing a connection string
-        return builder.AddExecutable(name, "dotnet", projectDirectory, "ef", "database", "update", "--no-build");
+        return builder.AddExecutable(name, "dotnet", projectDirectory, "ef", "database", "update", "--no-build")
+            .WaitForCompletion(install);
     }
 
     public static string GetProjectDirectory(this IResourceBuilder<ProjectResource> project) =>

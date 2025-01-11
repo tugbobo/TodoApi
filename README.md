@@ -27,8 +27,7 @@ It showcases:
 
 ### Database
 
-1. Install the **dotnet-ef** tool: `dotnet tool install dotnet-ef -g`
-1. Learn more about [dotnet-ef](https://learn.microsoft.com/en-us/ef/core/cli/dotnet)
+The application uses SQLite and entity framework. .NET Aspire is used to bootstrap all dependencies.
 
 ### Running the application
 
